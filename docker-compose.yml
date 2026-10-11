@@ -1,0 +1,34 @@
+# 本地 / 自建服务器一键启动：docker compose up -d
+# 访问 http://localhost:3000
+services:
+  pet-diary:
+    build: .
+    image: pet-diary:latest
+    container_name: pet-diary
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+      DATA_DIR: /data
+      # 生产环境通过 HTTPS 访问时保持 true（平台/反向代理已提供 HTTPS）
+      COOKIE_SECURE: "true"
+      # 关闭注册后，只有已存在的账号能登录
+      OPEN_REGISTRATION: "1"
+      # 设置邀请码后，注册必须填写邀请码
+      # INVITE_CODE: "your-invite-code"
+      # 需要提升为管理员的账号名（逗号分隔）
+      # ADMIN_USERS: "demo"
+      # 单张图片上传上限（MB）
+      MAX_UPLOAD_MB: "8"
+      SESSION_DAYS: "30"
+    volumes:
+      # 数据持久化：数据库 + 上传的图片都在这里，务必不要删
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

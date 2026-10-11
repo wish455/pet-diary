@@ -1,0 +1,18 @@
+{
+  "name": "pet-diary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "铲屎官日记 · 宠物管理系统（宠物档案 / 日常记录 / 健康管理 / 喂食计划 / 猫饭狗饭食谱 / 提醒 / 相册）",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "seed": "node server/seed.js",
+    "reset": "node server/seed.js --reset"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {}
+}

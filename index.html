@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>铲屎官日记 · 宠物管理系统</title>
+<meta name="description" content="宠物档案、日常记录、健康管理、喂食计划、猫饭狗饭自制食谱、提醒与相册" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-logo">🐾</span>
+      <div>
+        <strong>铲屎官日记</strong>
+        <small>宠物管理系统</small>
+      </div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-foot">
+      <button class="quick-add" id="quickAdd">＋ 记一笔</button>
+      <button class="user-chip" id="userChip" title="账号设置">
+        <span class="user-avatar" id="userAvatar">🐾</span>
+        <span class="user-meta">
+          <strong id="userName">未登录</strong>
+          <small id="userRole">—</small>
+        </span>
+        <span class="user-caret">⋯</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn only-mobile" id="menuBtn" aria-label="菜单">☰</button>
+      <div class="page-head">
+        <h1 id="pageTitle">总览</h1>
+        <p id="pageSub" class="muted small"></p>
+      </div>
+      <div class="topbar-right">
+        <select id="petSwitcher" class="pet-switcher" title="按宠物筛选"></select>
+        <button id="petSwitcherBtn" class="btn only-mobile" style="max-width:150px;overflow:hidden;text-overflow:ellipsis">🐾 全部</button>
+      </div>
+    </header>
+    <main id="view" class="view"></main>
+  </div>
+</div>
+
+<div class="tabbar only-mobile" id="tabbar"></div>
+<div class="toast-wrap" id="toastWrap"></div>
+<div class="modal-root" id="modalRoot"></div>
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox-close" aria-label="关闭">✕</button>
+  <button class="lightbox-nav prev" aria-label="上一张">‹</button>
+  <img alt="照片" id="lightboxImg" />
+  <button class="lightbox-nav next" aria-label="下一张">›</button>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
